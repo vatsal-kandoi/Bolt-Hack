@@ -1,11 +1,14 @@
 import modules.detectSpeech as detectSpeech;
 import modules.search as search;
+import modules.buttons as button
 import modules.detectOCR as OCR;
 from gtts import gTTS 
 import simpleaudio as sa
 import wget
 import re
-
+import Rpi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(13, GPIO.OUT)  
 '''
     2. Search for new
     3. In search for new, read out links to options available, and take input for which link to go to
@@ -17,8 +20,8 @@ import re
     9. Learn Braille course
 '''
 
-keyboardInput = False; # Default is microphone
-keyboardOutput = False; # Default if microphone
+keyboardInput = True; # Default is microphone
+keyboardOutput = True; # Default if microphone
 
 outputStream = '';
 inputStream = '';
@@ -64,14 +67,15 @@ if __name__=='__main__':
     # Set LED output high to signify switch on
 
     while True: # Looping indefinitely
-        # If learn braille
-
         # Check play pin press
-        # if (detectInput) add to input stream
+        inputChar = button.brailleInput(p,q,r,s,t,u);
+        if ( inputChar != None):
+            inputStream += inputChar;
+            print(inputStream) 
 
         if (sessionMode == 3 and currentLetter != len(outputStream)-1):
-            ## Actuate for letter
-            print("HELLO");        
+            button.brailleOutput(a,b,c,d,e,f,outputStream[currentLetter])
+
         if (playPin == 1):
             if (sessionMode == 0):
                 sessionMode = 1;

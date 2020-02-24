@@ -2,14 +2,16 @@ import speech_recognition as sr;
 import RPi.GPIO as gpio 
 from recorder import Recorder 
 
+
+
 class ButtonRecorder(object): 
     def __init__(self, filename, pin): 
-        self.filename = filename 
+        self.filename = filename
         gpio.setup(pin, gpio.IN, pull_up_down=gpio.PUD_UP) 
         self.pin = pin;
         self.rec = Recorder(channels=2) 
 
-    def start(self): 
+    def start(self):
         gpio.add_event_detect(self.pin, gpio.FALLING, callback=self.falling, bouncetime=10) 
 
     def rising(self, channel): 

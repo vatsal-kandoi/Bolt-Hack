@@ -271,77 +271,77 @@ def brailleOutput(a,b,c,d,e,f,char):
 
 def brailleInput(a,b,c,d,e,f):
     time.sleep(0.5);
-    if(GPIO.input(a,0) and GPIO.input(b,1) and GPIO.input(c,1) and GPIO.input(d,1) and GPIO.input(e,1) and GPIO.input(f,1)):
+    if(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "a"
-    elif(GPIO.input(a,0) and GPIO.input(b,0) and GPIO.input(c,1) and GPIO.input(d,1) and GPIO.input(e,1) and GPIO.input(f,1)):      
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):      
         return "b"
-    elif(GPIO.input(a,0) and GPIO.input(b,1) and GPIO.input(c,1) and GPIO.input(d,0) and GPIO.input(e,1) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "c"
-    elif(GPIO.input(a,0) and GPIO.input(b,1) and GPIO.input(c,1) and GPIO.input(d,0) and GPIO.input(e,0) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "d"
-    elif(GPIO.input(a,0) and GPIO.input(b,1) and GPIO.input(c,1) and GPIO.input(d,1) and GPIO.input(e,0) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "e"
-    elif(GPIO.input(a,0) and GPIO.input(b,0) and GPIO.input(c,1) and GPIO.input(d,0) and GPIO.input(e,1) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "f"
-    elif(GPIO.input(a,0) and GPIO.input(b,0) and GPIO.input(c,1) and GPIO.input(d,0) and GPIO.input(e,0) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "g"
-    elif(GPIO.input(a,0) and GPIO.input(b,0) and GPIO.input(c,1) and GPIO.input(d,1) and GPIO.input(e,0) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "h"
-    elif(GPIO.input(a,0) and GPIO.input(b,0) and GPIO.input(c,1) and GPIO.input(d,1) and GPIO.input(e,0) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "i"
-    elif(GPIO.input(a,1) and GPIO.input(b,0) and GPIO.input(c,1) and GPIO.input(d,0) and GPIO.input(e,0) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "j"
-    elif(GPIO.input(a,0) and GPIO.input(b,1) and GPIO.input(c,0) and GPIO.input(d,1) and GPIO.input(e,1) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "k"
-    elif(GPIO.input(a,0) and GPIO.input(b,0) and GPIO.input(c,0) and GPIO.input(d,1) and GPIO.input(e,1) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "l"
-    elif(GPIO.input(a,0) and GPIO.input(b,1) and GPIO.input(c,0) and GPIO.input(d,0) and GPIO.input(e,1) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "m"
-    elif(GPIO.input(a,0) and  GPIO.input(b,1) and GPIO.input(c,0) and GPIO.input(d,0) and GPIO.input(e,0) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and  GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "n"
-    elif(GPIO.input(a,0) and GPIO.input(b,1) and GPIO.input(c,0) and GPIO.input(d,1) and GPIO.input(e,0) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "o"
-    elif(GPIO.input(a,0) and GPIO.input(b,0) and GPIO.input(c,0) and GPIO.input(d,0) and GPIO.input(e,1) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "p"
-    elif(GPIO.input(a,0) and GPIO.input(b,0) and GPIO.input(c,0) and GPIO.input(d,0) and  GPIO.input(e,0) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and  GPIO.input(e) and GPIO.input(f)):
         return "q"
-    elif(GPIO.input(a,0) and GPIO.input(b,0) and GPIO.input(c,0) and GPIO.input(d,1) and GPIO.input(e,0) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "r"
-    elif(GPIO.input(a,1) and GPIO.input(b,0) and GPIO.input(c,0) and GPIO.input(d,0) and GPIO.input(e,1) and GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "s"
-    elif(GPIO.input(a,1) and GPIO.input(b,0) and GPIO.input(c,0) and GPIO.input(d,0) and  GPIO.input(e,0) and  GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and  GPIO.input(e) and  GPIO.input(f)):
         return "t"
-    elif(GPIO.input(a,0) and GPIO.input(b,1) and GPIO.input(c,0) and GPIO.input(d,1) and GPIO.input(e,1) and GPIO.input(f,0)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "u"
-    elif(GPIO.input(a,0) and GPIO.input(b,0) and GPIO.input(c,0) and GPIO.input(d,1) and  GPIO.input(e,1) and GPIO.input(f,0)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and  GPIO.input(e) and GPIO.input(f)):
         return "v"
-    elif(GPIO.input(a,1) and  GPIO.input(b,0) and  GPIO.input(c,1) and  GPIO.input(d,0) and GPIO.input(e,0) and  GPIO.input(f,0)):
+    elif(GPIO.input(a) and  GPIO.input(b) and  GPIO.input(c) and  GPIO.input(d) and GPIO.input(e) and  GPIO.input(f)):
         return "w"
-    elif(GPIO.input(a,0) and GPIO.input(b,1) and GPIO.input(c,0) and GPIO.input(d,0) and GPIO.input(e,1) and GPIO.input(f,0)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "x"
-    elif(GPIO.input(a,0) and  GPIO.input(b,1) and  GPIO.input(c,0) and  GPIO.input(d,0) and   GPIO.input(e,0) and  GPIO.input(f,0)):
+    elif(GPIO.input(a) and  GPIO.input(b) and  GPIO.input(c) and  GPIO.input(d) and   GPIO.input(e) and  GPIO.input(f)):
         return "y"
-    elif(GPIO.input(a,0) and GPIO.input(b,1) and   GPIO.input(c,0) and  GPIO.input(d,1) and   GPIO.input(e,0) and  GPIO.input(f,0)):
+    elif(GPIO.input(a) and GPIO.input(b) and   GPIO.input(c) and  GPIO.input(d) and   GPIO.input(e) and  GPIO.input(f)):
         return "z"
-    elif(GPIO.input(a,1) and GPIO.input(b,1) and GPIO.input(c,0) and   GPIO.input(d,1) and  GPIO.input(e,0) and   GPIO.input(f,0)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and   GPIO.input(d) and  GPIO.input(e) and   GPIO.input(f)):
         return "0"
-    elif(GPIO.input(a,1) and  GPIO.input(b,0) and GPIO.input(c,1) and GPIO.input(d,1) and   GPIO.input(e,1) and GPIO.input(f,1) ):
+    elif(GPIO.input(a) and  GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and   GPIO.input(e) and GPIO.input(f) ):
         return "1"
-    elif(GPIO.input(a,1) and GPIO.input(b,0) and GPIO.input(c,0) and GPIO.input(d,1) and GPIO.input(e,1) and GPIO.input(f,1) ):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f) ):
         return "2"
-    elif(GPIO.input(a,1) and GPIO.input(b,0) and GPIO.input(c,1) and  GPIO.input(d,1) and  GPIO.input(e,0) and   GPIO.input(f,1) ):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and  GPIO.input(d) and  GPIO.input(e) and   GPIO.input(f) ):
         return "3"
-    elif(GPIO.input(a,1) and GPIO.input(b,0) and GPIO.input(c,1) and  GPIO.input(d,1) and  GPIO.input(e,0) and  GPIO.input(f,0) ):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and  GPIO.input(d) and  GPIO.input(e) and  GPIO.input(f) ):
         return "4"
-    elif(GPIO.input(a,1) and GPIO.input(b,0) and  GPIO.input(c,1) and  GPIO.input(d,1) and  GPIO.input(e,1) and   GPIO.input(f,0)):
+    elif(GPIO.input(a) and GPIO.input(b) and  GPIO.input(c) and  GPIO.input(d) and  GPIO.input(e) and   GPIO.input(f)):
         return "5"
-    elif(GPIO.input(a,1) and   GPIO.input(b,0) and GPIO.input(c,0) and    GPIO.input(d,1) and  GPIO.input(e,0) and  GPIO.input(f,1)):
+    elif(GPIO.input(a) and   GPIO.input(b) and GPIO.input(c) and    GPIO.input(d) and  GPIO.input(e) and  GPIO.input(f)):
         return "6"
-    elif(GPIO.input(a,1) and  GPIO.input(b,0) and   GPIO.input(c,0) and  GPIO.input(d,1) and   GPIO.input(e,0) and   GPIO.input(f,0)):
+    elif(GPIO.input(a) and  GPIO.input(b) and   GPIO.input(c) and  GPIO.input(d) and   GPIO.input(e) and   GPIO.input(f)):
         return "7"
-    elif(GPIO.input(a,1) and  GPIO.input(b,0) and  GPIO.input(c,0) and  GPIO.input(d,1) and  GPIO.input(e,1) and  GPIO.input(f,0)):
+    elif(GPIO.input(a) and  GPIO.input(b) and  GPIO.input(c) and  GPIO.input(d) and  GPIO.input(e) and  GPIO.input(f)):
         return "8"
-    elif(GPIO.input(a,1) and GPIO.input(b,1) and GPIO.input(c,0) and  GPIO.input(d,1) and  GPIO.input(e,0) and  GPIO.input(f,1)):
+    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and  GPIO.input(d) and  GPIO.input(e) and  GPIO.input(f)):
         return "9"
     else:
         return None;

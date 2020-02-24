@@ -1,4 +1,5 @@
-import RPi.GPIO as GPIO        
+import RPi.GPIO as GPIO
+import time;
 
 def brailleOutput(a,b,c,d,e,f,char):
     if(char=="a"):
@@ -268,7 +269,8 @@ def brailleOutput(a,b,c,d,e,f,char):
         GPIO.output(e,1)
         GPIO.output(f,1)
 
-def brailleInput(a,b,c,d,e,f)
+def brailleInput(a,b,c,d,e,f):
+    time.sleep(0.5);
     if(GPIO.input(a,0) and GPIO.input(b,1) and GPIO.input(c,1) and GPIO.input(d,1) and GPIO.input(e,1) and GPIO.input(f,1)):
         return "a"
     elif(GPIO.input(a,0) and GPIO.input(b,0) and GPIO.input(c,1) and GPIO.input(d,1) and GPIO.input(e,1) and GPIO.input(f,1)):      

@@ -6,7 +6,9 @@ from gtts import gTTS
 import simpleaudio as sa
 import wget
 import re
-
+import Rpi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(13, GPIO.OUT)  
 '''
     2. Search for new
     3. In search for new, read out links to options available, and take input for which link to go to

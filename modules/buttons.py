@@ -271,9 +271,9 @@ def brailleOutput(a,b,c,d,e,f,char):
 
 def brailleInput(a,b,c,d,e,f):
     time.sleep(0.5);
-    if(GPIO.input(a) and GPIO.input(b)==False and GPIO.input(c)==False and GPIO.input(d)==False and GPIO.input(e)==False and GPIO.input(f)==False):
+    if(GPIO.input(a)==GPIO.HIGH and GPIO.input(b)==GPIO.LOW and GPIO.input(c)==GPIO.LOW and GPIO.input(d)==GPIO.LOW and GPIO.input(e)==GPIO.LOW and GPIO.input(f)==GPIO.LOW):
         return "a"
-    elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c)==False and GPIO.input(d)==False and GPIO.input(e)==False and GPIO.input(f)==False):      
+    elif(GPIO.input(a)==GPIO.HIGH and GPIO.input(b)==GPIO.HIGH and GPIO.input(c)==GPIO.LOW and GPIO.input(d)==GPIO.LOW and GPIO.input(e)==GPIO.LOW and GPIO.input(f)==GPIO.LOW):      
         return "b"
     elif(GPIO.input(a) and GPIO.input(b) and GPIO.input(c) and GPIO.input(d) and GPIO.input(e) and GPIO.input(f)):
         return "c"

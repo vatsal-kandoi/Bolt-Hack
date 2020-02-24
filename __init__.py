@@ -57,6 +57,9 @@ def format(response):
         output += "".join(response[i][1].split(" "));
     return output;
 
+def download():
+    wget.download(options[keyboardInput-1][0], 'response.pdf')
+
 if __name__=='__main__':
     # Set LED output high to signify switch on
 
@@ -90,8 +93,6 @@ if __name__=='__main__':
             elif (sessionMode == 2):
                 keyboardOutput = False;
                 sessionMode=0;
-            elif (sessionMode == 3 and currentLetter != 0):
-                currentLetter -= 1;
             elif (sessionMode == 4 and play_obj != None):
                 if (play_obj.is_playing()):
                     play_obj.stop();
@@ -100,7 +101,7 @@ if __name__=='__main__':
             if (keyboardInput):
                 if (searchStatus == 1):
                     # Open and read pdf
-                    wget.download(options[keyboardInput-1][0], 'response.pdf')
+                    download();
                     text = OCR.read('response.pdf');
                     if (keyboardOutput):
                         outputStream = "".join(text.split(" "));

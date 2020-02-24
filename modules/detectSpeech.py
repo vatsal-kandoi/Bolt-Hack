@@ -1,5 +1,3 @@
-#sudo apt-get install python-pyaudio python3-pyaudio
-#pip3 install pyaudio
 import speech_recognition as sr;
 import RPi.GPIO as gpio 
 from recorder import Recorder 

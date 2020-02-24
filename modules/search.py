@@ -10,6 +10,7 @@ def search(content):
     for i in table:
         child = i.findAll("a", recursive=False);
         link = child["href"];
-        details = child.findAll('h3', recursive=False);
-        links.append([link, details]);
+        if (link[-4:]=='.pdf'):
+            details = child.findAll('h3', recursive=False);
+            links.append([link, details]);
     return links;

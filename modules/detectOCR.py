@@ -6,7 +6,7 @@ import os
 
 def read(path):
     output = '';
-    if (path[-1:-4] == '.pdf'):
+    if (path[-4:] == '.pdf'):
         pages = convert_from_path(path, 500) 
         for page in pages: 
             text = str(((pytesseract.image_to_string(page))));

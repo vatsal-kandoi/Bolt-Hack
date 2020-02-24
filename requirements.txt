@@ -8,7 +8,7 @@ picamera==1.13
 picraft==1.0        
 piglow==1.2.4      
 pigpio==1.44       
-Pillow==5.4.1      
+Pillow==6.2.0      
 PyAudio==0.2.11     
 pytesseract==0.3.2      
 requests==2.21.0     

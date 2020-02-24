@@ -67,8 +67,8 @@ def format(response):
     return output;
 
 def download():
-    wget.download(options[keyboardInput-1][0], 'response.pdf')
-
+    wget.download(options[0][0], 'response.pdf')
+    
 if __name__=='__main__':
     # Set LED output high to signify switch on
     ser = serial.Serial('/dev/ttyACM0',9600)

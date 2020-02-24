@@ -4,7 +4,7 @@ import pyaudio
 import wave
 import sys
 
-def detectText(pin):
+def detectText():
     CHUNK = 512
     FORMAT = pyaudio.paInt16
     CHANNELS = 1

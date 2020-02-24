@@ -7,8 +7,12 @@ import simpleaudio as sa
 import wget
 import re
 import Rpi.GPIO as GPIO
+import serial
+
+
+
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(13, GPIO.OUT)  
+
 '''
     2. Search for new
     3. In search for new, read out links to options available, and take input for which link to go to
@@ -20,7 +24,7 @@ GPIO.setup(13, GPIO.OUT)
     9. Learn Braille course
 '''
 
-keyboardInput = True; # Default is microphone
+keyboardInput = False; # Default is microphone
 keyboardOutput = True; # Default if microphone
 
 outputStream = '';
@@ -47,6 +51,8 @@ sessionMode = 0;
 '''
 
 # Defining GPIO Pins
+a = 11
+
 
 pausePin = 26;
 playPin = 25;
@@ -65,16 +71,18 @@ def download():
 
 if __name__=='__main__':
     # Set LED output high to signify switch on
+    ser = serial.Serial('/dev/ttyACM0',9600)
 
     while True: # Looping indefinitely
         # Check play pin press
-        inputChar = button.brailleInput(p,q,r,s,t,u);
-        if ( inputChar != None):
-            inputStream += inputChar;
-            print(inputStream) 
+        # inputChar = button.brailleInput(p,q,r,s,t,u);
+        # if ( inputChar != None):
+        #     inputStream += inputChar;
+        #     print(inputStream) 
 
         if (sessionMode == 3 and currentLetter != len(outputStream)-1):
-            button.brailleOutput(a,b,c,d,e,f,outputStream[currentLetter])
+            # button.brailleOutput(a,b,c,d,e,f,outputStream[currentLetter])
+            ser.write(outputStream[currentLetter]);
 
         if (playPin == 1):
             if (sessionMode == 0):
@@ -135,7 +143,7 @@ if __name__=='__main__':
                         play_obj = wave_obj.play()
 
             else:
-                text = detectSpeech.detectText(enterPin);
+                text = detectSpeech.detectText();
                 text = text.lower();
                 if (text == 'cannot decipher try again'):
                     outputStream = text;

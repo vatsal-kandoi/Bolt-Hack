@@ -17,5 +17,5 @@ RPi.GPIO==0.7.0
 setuptools==40.8.0     
 simpleaudio==1.0.4        
 SpeechRecognition==3.8.1     
-urllib3==1.24.1     
+urllib3==1.24.2     
 wget==3.2

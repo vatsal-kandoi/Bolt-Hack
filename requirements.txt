@@ -1,0 +1,10 @@
+gtts
+simpleaudio
+wget
+PIL
+pytesseract
+pdf2image
+speech_recognition
+recorder
+bs4
+requests

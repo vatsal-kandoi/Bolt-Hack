@@ -8,6 +8,6 @@ text = text.lower();
 print(text);
 #results = search.search(text);
 #print(results);
-#wget.download("http://www.africau.edu/images/default/sample.pdf", 'response.pdf')
-#text2 = OCR.read("response.pdf");
+wget.download("http://www.africau.edu/images/default/sample.pdf", 'response.pdf')
+text2 = OCR.read("response.pdf");
 print(text2);

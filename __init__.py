@@ -78,13 +78,19 @@ if __name__=='__main__':
     while True: # Looping indefinitely
         text = detectSpeech.detectText();
         print(text);
-        text = json.load(requests.get("https://api.duckduckgo.com/?q="+text[0]+"&format=json"))
+        text = json.load(requests.get("https://api.duckduckgo.com/?q="+text+"&format=json"))
         text = OCR.read('image.jpg');
-        myobj = gTTS(text=text, lang='en', slow=False);
-        myobj.save("response.wav");
-        wave_obj = sa.WaveObject.from_wave_file("response.wav")
-        play_obj = wave_obj.play()
+        print(text["Related"]);
+        #myobj = gTTS(text=text, lang='en', slow=False);
+        #myobj.save("response.wav");
+        #wave_obj = sa.WaveObject.from_wave_file("response.wav")
+        #play_obj = wave_obj.play()
         ser.write(text);
+        line = ser.readline()
+        while(line != 'ok'):
+            pass;
+
+        print("Entered line");
         # Check play pin press
         # inputChar = button.brailleInput(p,q,r,s,t,u);
         # if ( inputChar != None):

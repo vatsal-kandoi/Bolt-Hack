@@ -1,5 +1,6 @@
 import modules.detectSpeech as detectSpeech;
 import modules.search as search;
+import requests;
 import modules.buttons as button
 import modules.detectOCR as OCR;
 from gtts import gTTS 
@@ -8,7 +9,7 @@ import wget
 import re
 import Rpi.GPIO as GPIO
 import serial
-
+import json
 
 
 GPIO.setmode(GPIO.BOARD)
@@ -77,6 +78,7 @@ if __name__=='__main__':
     while True: # Looping indefinitely
         text = detectSpeech.detectText();
         print(text);
+        text = json.load(requests.get("https://api.duckduckgo.com/?q="+text[0]+"&format=json"))
         text = OCR.read('image.jpg');
         myobj = gTTS(text=text, lang='en', slow=False);
         myobj.save("response.wav");

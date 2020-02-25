@@ -3,7 +3,8 @@ import modules.search as search;
 import requests;
 import modules.buttons as button
 import modules.detectOCR as OCR;
-import picamera;
+#from picamera import Picamera;
+from PIL import Image
 from gtts import gTTS 
 import simpleaudio as sa
 import wget
@@ -13,6 +14,7 @@ import serial
 import json
 import urllib
 import time;
+import pytesseract
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -77,14 +79,23 @@ if __name__=='__main__':
     ser = serial.Serial('/dev/ttyACM0',9600)
 
 
-    while True: # Looping indefinitely
-        if(ser.readline() == 'audio'):
+    while True: # Looping indefinitel
+        read = ser.readline().decode();
+       	read = read[0:2];
+        time.sleep(1);
+        print(read);
+        print(len(read));
+        if(read == "au"):
+            print("Detecting");
             text = detectSpeech.detectText();
             text = text.split(" ")[0];
             print(text);
             response = requests.get("https://api.duckduckgo.com/?q="+text+"&format=json")
             text = response.json()
-            text = text["RelatedTopics"][0]["Text"]
+            try:
+                text = text["RelatedTopics"][0]["Text"]
+            except:
+                text = "Error"
             print(text);
             text = text.lower();
             #text = OCR.read('image.jpg');
@@ -93,21 +104,23 @@ if __name__=='__main__':
             #wave_obj = sa.WaveObject.from_wave_file("response.wav")
             #play_obj = wave_obj.play()
             ser.write(str.encode(text));
-            while(ser.readline() != 'ok'):
+            while(ser.readline().decode()[0:2] != 'ok'):
                 pass;
             print("Entered");
-        elif(ser.readline() == 'camera'):
-            camera = PiCamera()
-            camera.start_preview()
-            time.sleep(5)
-            camera.capture('/home/pi/Desktop/image.jpg')
-            camera.stop_preview()
+        elif(read == 'ca'):
+            #camera = PiCamera()
+            #camera.start_preview()
+            #time.sleep(5)
+            #camera.capture('/home/pi/Desktop/image.jpg')
+            #amera.stop_preview()
             text = pytesseract.image_to_string(Image.open('image.jpg'))
             print(text)
             ser.write(str.encode(text));
-            while(ser.readline() != 'ok'):
+            while(ser.readline().decode()[0:2] != 'ok'):
                 pass;
             print("Entered");
+        else:
+            pass;
        	# Check play pin press
         # inputChar = button.brailleInput(p,q,r,s,t,u);
         # if ( inputChar != None):

@@ -73,119 +73,128 @@ if __name__=='__main__':
     # Set LED output high to signify switch on
     ser = serial.Serial('/dev/ttyACM0',9600)
 
+
     while True: # Looping indefinitely
+        text = detectSpeech.detectText();
+        print(text);
+        text = OCR.read('image.jpg');
+        myobj = gTTS(text=text, lang='en', slow=False);
+        myobj.save("response.wav");
+        wave_obj = sa.WaveObject.from_wave_file("response.wav")
+        play_obj = wave_obj.play()
+        ser.write(text);
         # Check play pin press
         # inputChar = button.brailleInput(p,q,r,s,t,u);
         # if ( inputChar != None):
         #     inputStream += inputChar;
         #     print(inputStream) 
 
-        if (sessionMode == 3 and currentLetter != len(outputStream)-1):
-            # button.brailleOutput(a,b,c,d,e,f,outputStream[currentLetter])
-            ser.write(outputStream[currentLetter]);
+        # if (sessionMode == 3 and currentLetter != len(outputStream)-1):
+        #     # button.brailleOutput(a,b,c,d,e,f,outputStream[currentLetter])
+        #     ser.write(outputStream[currentLetter]);
 
-        if (playPin == 1):
-            if (sessionMode == 0):
-                sessionMode = 1;
-            elif (sessionMode == 1):
-                keyboardInput = True;
-                sessionMode=0;
-            elif (sessionMode == 2):
-                keyboardOutput = True;
-                sessionMode=0;
-            elif (sessionMode == 3):
-                currentLetter += 1;
+        # if (playPin == 1):
+        #     if (sessionMode == 0):
+        #         sessionMode = 1;
+        #     elif (sessionMode == 1):
+        #         keyboardInput = True;
+        #         sessionMode=0;
+        #     elif (sessionMode == 2):
+        #         keyboardOutput = True;
+        #         sessionMode=0;
+        #     elif (sessionMode == 3):
+        #         currentLetter += 1;
         
-        if (pausePin == 1):
-            if (sessionMode == 0):
-                sessionMode = 2;
-            elif (sessionMode == 1):
-                keyboardInput = False;
-                sessionMode=0;
-            elif (sessionMode == 2):
-                keyboardOutput = False;
-                sessionMode=0;
-            elif (sessionMode == 4 and play_obj != None):
-                if (play_obj.is_playing()):
-                    play_obj.stop();
+        # if (pausePin == 1):
+        #     if (sessionMode == 0):
+        #         sessionMode = 2;
+        #     elif (sessionMode == 1):
+        #         keyboardInput = False;
+        #         sessionMode=0;
+        #     elif (sessionMode == 2):
+        #         keyboardOutput = False;
+        #         sessionMode=0;
+        #     elif (sessionMode == 4 and play_obj != None):
+        #         if (play_obj.is_playing()):
+        #             play_obj.stop();
 
-        if (enterPin == 1):
-            if (keyboardInput):
-                if (searchStatus == 1):
-                    # Open and read pdf
-                    download();
-                    text = OCR.read('response.pdf');
-                    if (keyboardOutput):
-                        outputStream = "".join(text.split(" "));
-                        outputStream = re.sub('[\W]+','',outputStream);
-                        outputStream = outputStream.lower();
-                        sessionMode = 3;
-                    else:
-                        myobj = gTTS(text=outputStream, lang='en', slow=False);
-                        myobj.save("response.wav");
-                        wave_obj = sa.WaveObject.from_wave_file("response.wav")
-                        play_obj = wave_obj.play()
-                    searchStatus = 0;
-                else:
-                    results = search.search(inputStream);
-                    outputStream = format(results);
-                    options = results;
-                    searchStatus = 1;
-                    if (keyboardOutput):
-                        outputStream = "".join(text.split(" "));
-                        outputStream = re.sub('[\W]+','',outputStream);
-                        outputStream = outputStream.lower();
-                        sessionMode = 3;
-                    else:
-                        myobj = gTTS(text=outputStream, lang='en', slow=False);
-                        myobj.save("response.wav");
-                        wave_obj = sa.WaveObject.from_wave_file("response.wav")
-                        play_obj = wave_obj.play()
+        # if (enterPin == 1):
+        #     if (keyboardInput):
+        #         if (searchStatus == 1):
+        #             # Open and read pdf
+        #             download();
+        #             text = OCR.read('response.pdf');
+        #             if (keyboardOutput):
+        #                 outputStream = "".join(text.split(" "));
+        #                 outputStream = re.sub('[\W]+','',outputStream);
+        #                 outputStream = outputStream.lower();
+        #                 sessionMode = 3;
+        #             else:
+        #                 myobj = gTTS(text=outputStream, lang='en', slow=False);
+        #                 myobj.save("response.wav");
+        #                 wave_obj = sa.WaveObject.from_wave_file("response.wav")
+        #                 play_obj = wave_obj.play()
+        #             searchStatus = 0;
+        #         else:
+        #             results = search.search(inputStream);
+        #             outputStream = format(results);
+        #             options = results;
+        #             searchStatus = 1;
+        #             if (keyboardOutput):
+        #                 outputStream = "".join(text.split(" "));
+        #                 outputStream = re.sub('[\W]+','',outputStream);
+        #                 outputStream = outputStream.lower();
+        #                 sessionMode = 3;
+        #             else:
+        #                 myobj = gTTS(text=outputStream, lang='en', slow=False);
+        #                 myobj.save("response.wav");
+        #                 wave_obj = sa.WaveObject.from_wave_file("response.wav")
+        #                 play_obj = wave_obj.play()
 
-            else:
-                text = detectSpeech.detectText();
-                text = text.lower();
-                if (text == 'cannot decipher try again'):
-                    outputStream = text;
-                elif (text == 'learn braille'):
-                    print("Learn braille");
-                elif (searchStatus == 1):
-                    # Open and read pdf
-                    wget.download(options[text-1][0], 'response.pdf')
-                    text = OCR.read("response.pdf");
-                    outputStream = text;
-                    if (keyboardOutput):
-                        outputStream = "".join(text.split(" "));
-                        outputStream = re.sub('[\W]+','',outputStream);
-                        outputStream = outputStream.lower();
-                        sessionMode = 3;
-                    else:
-                        myobj = gTTS(text=outputStream, lang='en', slow=False);
-                        myobj.save("response.wav");
-                        wave_obj = sa.WaveObject.from_wave_file("response.wav")
-                        play_obj = wave_obj.play()
-                    searchStatus = 0;
-                else:
-                    results = search.search(text);
-                    outputStream = format(results);
-                    options = results;
-                    searchStatus = 1;
-                if (keyboardOutput):
-                    outputStream = "".join(text.split(" "));
-                    outputStream = re.sub('[\W]+','',outputStream);
-                    outputStream = outputStream.lower();
-                    sessionMode = 3;
-                else:
-                    myobj = gTTS(text=outputStream, lang='en', slow=False);
-                    myobj.save("response.wav");
-                    wave_obj = sa.WaveObject.from_wave_file("response.wav")
-                    sessionMode = 4;
-                    play_obj = wave_obj.play();
+        #     else:
+        #         text = detectSpeech.detectText();
+        #         text = text.lower();
+        #         if (text == 'cannot decipher try again'):
+        #             outputStream = text;
+        #         elif (text == 'learn braille'):
+        #             print("Learn braille");
+        #         elif (searchStatus == 1):
+        #             # Open and read pdf
+        #             wget.download(options[text-1][0], 'response.pdf')
+        #             text = OCR.read("response.pdf");
+        #             outputStream = text;
+        #             if (keyboardOutput):
+        #                 outputStream = "".join(text.split(" "));
+        #                 outputStream = re.sub('[\W]+','',outputStream);
+        #                 outputStream = outputStream.lower();
+        #                 sessionMode = 3;
+        #             else:
+        #                 myobj = gTTS(text=outputStream, lang='en', slow=False);
+        #                 myobj.save("response.wav");
+        #                 wave_obj = sa.WaveObject.from_wave_file("response.wav")
+        #                 play_obj = wave_obj.play()
+        #             searchStatus = 0;
+        #         else:
+        #             results = search.search(text);
+        #             outputStream = format(results);
+        #             options = results;
+        #             searchStatus = 1;
+        #         if (keyboardOutput):
+        #             outputStream = "".join(text.split(" "));
+        #             outputStream = re.sub('[\W]+','',outputStream);
+        #             outputStream = outputStream.lower();
+        #             sessionMode = 3;
+        #         else:
+        #             myobj = gTTS(text=outputStream, lang='en', slow=False);
+        #             myobj.save("response.wav");
+        #             wave_obj = sa.WaveObject.from_wave_file("response.wav")
+        #             sessionMode = 4;
+        #             play_obj = wave_obj.play();
 
-        if (exitPin == 1):
-            sessionMode = 0;
-            currentLetter = 0;
-            inputStream = '';
-            outputStream = '';
-            if (play_obj != None):
-                play_obj.stop();
+        # if (exitPin == 1):
+        #     sessionMode = 0;
+        #     currentLetter = 0;
+        #     inputStream = '';
+        #     outputStream = '';
+        #     if (play_obj != None):
+        #         play_obj.stop();

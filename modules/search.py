@@ -1,16 +1,8 @@
 import requests 
 from bs4 import BeautifulSoup 
-  
+import googlesearch
 def search(content):
-    URL = "https://google.com/search?channel=fs&q=" + "+".join(content.split(" "))+'+pdf';
-    r = requests.get(URL); 
-    soup = BeautifulSoup(r.content, 'html5lib') 
-    links=[] 
-    table = soup.findAll('div', attrs = {'class':'r'});
-    for i in table:
-        child = i.findAll("a", recursive=False);
-        link = child["href"];
-        if (link[-4:]=='.pdf'):
-            details = child.findAll('h3', recursive=False);
-            links.append([link, details]);
-    return links;
+    response = googlesearch.search(content+" pdf", stop=20)
+    for result in response:
+        print(result)
+    return response;

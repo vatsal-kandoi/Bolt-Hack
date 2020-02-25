@@ -3,10 +3,11 @@ import modules.search as search;
 import modules.detectOCR as OCR;
 import wget
 
-text = detectSpeech.detectText(enterPin);
+text = detectSpeech.detectText();
 text = text.lower();
 print(text);
-results = search.search(text);
-wget.download(results[keyboardInput-1][0], 'response.pdf')
+#results = search.search(text);
+#print(results);
+wget.download("http://www.africau.edu/images/default/sample.pdf", 'response.pdf')
 text2 = OCR.read("response.pdf");
 print(text2);
